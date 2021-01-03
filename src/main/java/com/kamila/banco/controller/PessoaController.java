@@ -1,9 +1,9 @@
 package com.kamila.banco.controller;
 
-import com.kamila.banco.dtos.persist.PessoaPersist;
-import com.kamila.banco.dtos.response.PessoaResponse;
+import com.kamila.banco.dto.persist.PessoaPersist;
+import com.kamila.banco.dto.response.PessoaResponse;
 import com.kamila.banco.entity.Pessoa;
-import com.kamila.banco.servicos.PessoaService;
+import com.kamila.banco.service.PessoaService;
 import com.kamila.banco.converter.Converter;
 import com.kamila.banco.util.Path;
 import lombok.AllArgsConstructor;

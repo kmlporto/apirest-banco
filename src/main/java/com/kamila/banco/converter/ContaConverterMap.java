@@ -1,7 +1,7 @@
 package com.kamila.banco.converter;
 
-import com.kamila.banco.dtos.persist.ContaPersist;
-import com.kamila.banco.dtos.response.ContaResponse;
+import com.kamila.banco.dto.persist.ContaPersist;
+import com.kamila.banco.dto.response.ContaResponse;
 import com.kamila.banco.entity.Conta;
 import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;

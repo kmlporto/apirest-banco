@@ -1,4 +1,4 @@
-package com.kamila.banco.servicos;
+package com.kamila.banco.service;
 
 import com.kamila.banco.entity.Conta;
 import com.kamila.banco.repository.ContaRepository;

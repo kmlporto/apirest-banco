@@ -1,4 +1,4 @@
-package com.kamila.banco.dtos.persist;
+package com.kamila.banco.dto.persist;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

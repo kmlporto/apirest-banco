@@ -1,10 +1,10 @@
 package com.kamila.banco.controller;
 
 import com.kamila.banco.converter.ContaConverterMap;
-import com.kamila.banco.dtos.persist.ContaPersist;
-import com.kamila.banco.dtos.response.ContaResponse;
+import com.kamila.banco.dto.persist.ContaPersist;
+import com.kamila.banco.dto.response.ContaResponse;
 import com.kamila.banco.entity.Conta;
-import com.kamila.banco.servicos.ContaService;
+import com.kamila.banco.service.ContaService;
 import com.kamila.banco.converter.Converter;
 import com.kamila.banco.util.Path;
 import lombok.AllArgsConstructor;

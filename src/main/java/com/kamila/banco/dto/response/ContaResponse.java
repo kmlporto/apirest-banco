@@ -1,4 +1,4 @@
-package com.kamila.banco.dtos.response;
+package com.kamila.banco.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
