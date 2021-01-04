@@ -19,5 +19,5 @@ public class ContaResponse implements Serializable {
 
     private Long saldo;
 
-    private Long pessoa;
+    private Long idPessoa;
 }

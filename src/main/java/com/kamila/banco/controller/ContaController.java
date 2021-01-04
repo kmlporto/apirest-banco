@@ -1,11 +1,10 @@
 package com.kamila.banco.controller;
 
-import com.kamila.banco.converter.ContaConverterMap;
+import com.kamila.banco.converter.ContaMapper;
 import com.kamila.banco.dto.persist.ContaPersist;
 import com.kamila.banco.dto.response.ContaResponse;
 import com.kamila.banco.entity.Conta;
 import com.kamila.banco.service.ContaService;
-import com.kamila.banco.converter.Converter;
 import com.kamila.banco.util.Path;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,22 +25,21 @@ import javax.validation.Valid;
 public class ContaController {
 
     private final ContaService service;
-    private final Converter converter;
-    private final ContaConverterMap.PersistToEntity persistToEntity;
-    private final ContaConverterMap.EntityToResponse entityToResponse;
+
+    private final ContaMapper contaMapper;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<ContaResponse> consultar(@PathVariable("id")Long id){
         Conta conta = service.consultar(id);
-        ContaResponse response = converter.map(conta, ContaResponse.class);
+        ContaResponse response = contaMapper.entityToResponse(conta);
 
         return ResponseEntity.ok().body(response);
     }
 
     @PostMapping
     public ResponseEntity<ContaResponse> salvar(@Valid @RequestBody ContaPersist contaPersist){
-        Conta conta = service.salvar(converter.map(contaPersist, Conta.class, persistToEntity));
-        ContaResponse response = converter.map(conta, ContaResponse.class, entityToResponse);
+        Conta conta = service.salvar(contaMapper.persitToEntity(contaPersist));
+        ContaResponse response = contaMapper.entityToResponse(conta);
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
