@@ -5,7 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.math.BigDecimal;
 
 @Data
 @Builder
@@ -18,11 +24,13 @@ public class Conta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String agencia;
-
     private String numero;
 
-    private Long saldo;
+    private BigDecimal saldo;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Agencia agencia;
 
     @ManyToOne
     @JoinColumn(nullable = false)

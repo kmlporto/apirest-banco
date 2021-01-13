@@ -1,4 +1,4 @@
-package com.kamila.banco.dto.response;
+package com.kamila.banco.web.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

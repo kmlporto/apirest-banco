@@ -1,8 +1,8 @@
-package com.kamila.banco.controller;
+package com.kamila.banco.web.controller;
 
 import com.kamila.banco.converter.ContaMapper;
-import com.kamila.banco.dto.persist.ContaPersist;
-import com.kamila.banco.dto.response.ContaResponse;
+import com.kamila.banco.web.dto.persist.ContaPersist;
+import com.kamila.banco.web.dto.response.ContaResponse;
 import com.kamila.banco.entity.Conta;
 import com.kamila.banco.service.ContaService;
 import com.kamila.banco.util.Path;

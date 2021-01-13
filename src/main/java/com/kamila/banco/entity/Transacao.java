@@ -1,34 +1,35 @@
 package com.kamila.banco.entity;
 
-import com.kamila.banco.enums.TipoPessoa;
+
+import com.kamila.banco.enums.TipoTransacao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Pessoa {
+public class Transacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
+    private LocalDateTime dateTime;
 
-    private String email;
+    private BigDecimal valor;
 
     @Enumerated(EnumType.STRING)
-    private TipoPessoa tipoPessoa;
+    private TipoTransacao tipoTransacao;
 
-    private String cpf;
-
-    private LocalDate dataNascimento;
+    @ManyToOne
+    private Conta conta;
 
 }

@@ -1,4 +1,4 @@
-package com.kamila.banco.dto.persist;
+package com.kamila.banco.web.dto.persist;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Data
 @Builder
@@ -18,8 +19,11 @@ public class ContaPersist implements Serializable {
     private Long idPessoa;
 
     @NotNull
-    private String agencia;
+    private Long idAgencia;
 
     @NotNull
-    private Long saldo;
+    private String numero;
+
+    @NotNull
+    private BigDecimal saldo;
 }

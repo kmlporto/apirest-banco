@@ -1,11 +1,11 @@
 package com.kamila.banco.service;
 
 import com.kamila.banco.entity.Conta;
+import com.kamila.banco.error.NotFoundException;
 import com.kamila.banco.repository.ContaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.NoResultException;
 import java.security.InvalidParameterException;
 import java.util.Optional;
 
@@ -17,13 +17,21 @@ public class ContaService {
     private final PessoaService pessoaService;
 
     public Conta consultar(Long id) {
-        Optional.ofNullable(id).orElseThrow(InvalidParameterException::new);
-        return contaRepository.findById(id).orElseThrow(NoResultException::new);
+        existsById(id);
+        return contaRepository.findById(id).get();
     }
 
     public Conta salvar(Conta conta){
-        pessoaService.consultar(conta.getPessoa().getId());
         Optional.ofNullable(conta).orElseThrow(InvalidParameterException::new);
+        pessoaService.existsById(conta.getPessoa().getId());
+
         return contaRepository.save(conta);
+    }
+
+    public void existsById(Long id){
+        Optional.ofNullable(id).orElseThrow(InvalidParameterException::new);
+        if (!contaRepository.existsById(id)){
+            throw new NotFoundException("Conta não encontrada");
+        }
     }
 }

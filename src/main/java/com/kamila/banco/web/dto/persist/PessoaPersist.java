@@ -1,11 +1,12 @@
-package com.kamila.banco.dto.persist;
+package com.kamila.banco.web.dto.persist;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -17,11 +18,12 @@ public class PessoaPersist implements Serializable {
     @NotNull(message = "Campo nome não pode ser nulo")
     private String nome;
 
-    @NotNull(message = "Campo email não pode ser nulo")
+    @Email(message = "Email inválido")
+    @NotNull(message = "Campo e-mail não pode ser nulo")
     private String email;
 
-    @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}", message = "cpf inválido")
-    @NotNull(message = "Campo cpf não pode ser nulo")
+    @CPF(message = "CPF inválido")
+    @NotNull(message = "Campo CPF não pode ser nulo")
     private String cpf;
 
     @NotNull(message = "Campo data de nascimento não pode ser nulo")
