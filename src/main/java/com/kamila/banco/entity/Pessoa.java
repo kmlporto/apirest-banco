@@ -29,6 +29,8 @@ public class Pessoa {
 
     private String cpf;
 
+    private String cnpj;
+
     private LocalDate dataNascimento;
 
 }

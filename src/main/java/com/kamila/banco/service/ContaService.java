@@ -6,6 +6,7 @@ import com.kamila.banco.repository.ContaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.security.InvalidParameterException;
 import java.util.Optional;
 
@@ -26,6 +27,11 @@ public class ContaService {
         pessoaService.existsById(conta.getPessoa().getId());
 
         return contaRepository.save(conta);
+    }
+
+    public BigDecimal consultarSaldo(Long idConta){
+        Conta conta = consultar(idConta);
+        return conta.getSaldo();
     }
 
     public void existsById(Long id){

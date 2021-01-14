@@ -8,4 +8,6 @@ public class Path {
     public final static String CONTA_TRANSACAO = CONTA + ID + TRANSACAO;
     public final static String SAQUE = "/saques";
     public final static String DEPOSITO = "/depositos";
+    public final static String SALDO = ID + "/saldo";
+    public final static String EXTRATO = ID + "/extrato";
 }

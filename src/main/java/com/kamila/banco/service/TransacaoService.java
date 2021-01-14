@@ -8,7 +8,8 @@ import com.kamila.banco.repository.TransacaoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -21,7 +22,7 @@ public class TransacaoService {
     public Transacao transacao(Long idConta, Transacao transacao){
         Conta conta = contaService.consultar(idConta);
         transacao.setConta(conta);
-        transacao.setDateTime(LocalDateTime.now());
+        transacao.setDataTransacao(LocalDate.now());
         alterarSaldo(conta, transacao);
 
         return transacaoRepository.save(transacao);
@@ -38,4 +39,12 @@ public class TransacaoService {
         }
     }
 
+    public List<Transacao> consultarExtrado(Long idConta, LocalDate dataInicio, LocalDate dataFim){
+        contaService.existsById(idConta);
+        return listarTransacoes(idConta, dataInicio, dataFim);
+    }
+
+    public List<Transacao> listarTransacoes(Long idConta, LocalDate dataInicio, LocalDate dataFim){
+        return transacaoRepository.findAllByConta_IdAndDataTransacaoBetween(idConta, dataInicio, dataFim);
+    }
 }

@@ -1,6 +1,6 @@
 package com.kamila.banco.web.dto.persist;
 
-import com.kamila.banco.enums.TipoTransacao;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 public class TransacaoPersist implements Serializable {
 
     @NotNull
+    @ApiModelProperty(position = 1, required = true, example = "100.00")
     private BigDecimal valor;
 
 }
